@@ -16,33 +16,10 @@ fn main() {
 
     framebuffer.set_color(Color::YELLOW);
 
-    /* line::line(
-        &mut framebuffer,
-        Vertex::new(50, 50),
-        Vertex::new(450, 350),
-    ); */
-
     // =========================
-    // Pentágono (ACTIVO)
+    // Polígono 1
     // =========================
-    let pentagon = [
-        Vertex::new(250, 50),
-        Vertex::new(420, 170),
-        Vertex::new(360, 380),
-        Vertex::new(140, 380),
-        Vertex::new(80, 170),
-    ];
-
-    polygon::draw_polygon(
-        &mut framebuffer,
-        &pentagon,
-    );
-
-    // =========================
-    // Estrella
-    // =========================
-    /*
-    let star = [
+    let polygon1 = [
         Vertex::new(165, 380),
         Vertex::new(185, 360),
         Vertex::new(180, 330),
@@ -55,50 +32,59 @@ fn main() {
         Vertex::new(193, 383),
     ];
 
+    polygon::fill_polygon(
+        &mut framebuffer,
+        &polygon1,
+    );
+
     polygon::draw_polygon(
         &mut framebuffer,
-        &star,
+        &polygon1,
     );
-    */
 
     // =========================
-    // Cuadrilátero
+    // Polígono 2
     // =========================
-    /*
-    let quad = [
+    let polygon2 = [
         Vertex::new(321, 335),
         Vertex::new(288, 286),
         Vertex::new(339, 251),
         Vertex::new(374, 302),
     ];
 
+    polygon::fill_polygon(
+        &mut framebuffer,
+        &polygon2,
+    );
+
     polygon::draw_polygon(
         &mut framebuffer,
-        &quad,
+        &polygon2,
     );
-    */
 
     // =========================
-    // Triángulo
+    // Polígono 3
     // =========================
-    /*
-    let triangle = [
+    let polygon3 = [
         Vertex::new(377, 249),
         Vertex::new(411, 197),
         Vertex::new(436, 249),
     ];
 
+    polygon::fill_polygon(
+        &mut framebuffer,
+        &polygon3,
+    );
+
     polygon::draw_polygon(
         &mut framebuffer,
-        &triangle,
+        &polygon3,
     );
-    */
 
     // =========================
-    // Polígono grande
+    // Polígono 4
     // =========================
-    /*
-    let polygon1 = [
+    let polygon4 = [
         Vertex::new(413, 177),
         Vertex::new(448, 159),
         Vertex::new(502, 88),
@@ -119,30 +105,33 @@ fn main() {
         Vertex::new(466, 180),
     ];
 
-    polygon::draw_polygon(
-        &mut framebuffer,
-        &polygon1,
-    );
-    */
-
     // =========================
-    // Cuadrilátero pequeño
+    // Polígono 5
     // =========================
-    /*
-    let polygon2 = [
+    let polygon5 = [
         Vertex::new(682, 175),
         Vertex::new(708, 120),
         Vertex::new(735, 148),
         Vertex::new(739, 170),
     ];
 
+    polygon::fill_polygon_with_holes(
+        &mut framebuffer,
+        &polygon4,
+        &[&polygon5],
+    );
+
     polygon::draw_polygon(
         &mut framebuffer,
-        &polygon2,
+        &polygon4,
     );
-    */
 
-    framebuffer.save("my_first_image.png");
+    polygon::draw_polygon(
+        &mut framebuffer,
+        &polygon5,
+    );
+
+    framebuffer.save("out.png");
 
     println!("Image Saved Successfully!");
 }
